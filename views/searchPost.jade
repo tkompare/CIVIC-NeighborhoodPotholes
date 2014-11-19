@@ -1,0 +1,43 @@
+extends layout
+block content
+	div.container
+		div.jumbotron
+			div.container
+				h1= title
+				if area != ''
+					p Community Area:&nbsp;
+						b #{area}
+				if ward != ''
+					p Ward:&nbsp
+						b #{ward}
+				if street != ''
+					p Street:&nbsp;
+						b #{street}
+				if status != ''
+					p Status:&nbsp;
+						b #{status}
+		div.container
+			table(class="table table-striped", data-toggle="table", data-cache="false", data-sort-name="date", data-sort-order="desc" data-show-columns="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-export="true" data-pagination="false")
+				thead
+					tr
+						th(data-field="date", data-sortable="true") Creation Date
+						th(data-field="request", data-sortable="true") Service Request Number
+						th(data-field="address", data-sortable="true") Address
+						th(data-field="status", data-sortable="true") Status
+				tbody
+					each pothole in potholes
+						tr
+							td= pothole.creation_date
+							td= pothole.service_request_number
+							td= pothole.street_address
+							td= pothole.status
+	script(src='//code.jquery.com/jquery-2.1.0.min.js')
+	script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+	script(src='/javascripts/bootstrap-table.min.js')
+	script(src='/javascripts/tableExport.js')
+	script(src='/javascripts/jquery.base64.js')
+	script(src="/javascripts/html2canvas.js")
+	script(src="/javascripts/jspdf/libs/sprintf.js")
+	script(src="/javascripts/jspdf/jspdf.js")
+	script(src="/javascripts/jspdf/libs/base64.js")
+	script(src="/javascripts/bootstrap-table-export.js")

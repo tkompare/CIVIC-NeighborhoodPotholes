@@ -1,0 +1,54 @@
+extends layout
+block content
+	div.container
+		div.jumbotron
+			div.container
+				h1= title
+				p Enter a community area or ward, a street name, and choose a request status
+				form(role="form", class="form-horizontal", id="potholesearch" name="potholesearch", action="search", method="post")
+					div.well
+						small (Choosing a community area or ward is required)
+						br
+						br
+						div.form-group
+							label(for='areas', class="col-sm-2 control-label") Community Area
+							div.col-sm-3
+								select(type="text", id="areas" class="form-control validation-group-1" name="areas")
+									option(value="") None
+										each area in areas
+											option(value=area.area_num) #{area.community_titlecase}
+							label(for='ward', class="col-sm-2 control-label") or Ward
+							div.col-sm-3
+								select(type="text", id="ward" class="form-control validation-group-1" name="ward")
+									option(value="") None
+									each ward in wards
+										option(value=ward.ward) #{ward.ward} - (#{ward.alderman_titlecase})
+					div.well
+						small (Entering a street name is optional)
+						br
+						br
+						div.form-group
+							label(for='street', class="col-sm-2 control-label") Street Name
+							div.col-sm-9
+								input.form-control(type="text", id="street", name="street" placeholder="Street Name Only (ex. \"Greenleaf\" or \"113\")")
+					div.well
+						small (Choosing a request status is required)
+						br
+						br
+						div.form-group
+							label(for="radio-btn", class="col-sm-2 control-label") Request Status
+							div.col-sm-9(id="radio-btn")
+								div.radio
+									label
+										input(type="radio", name="status", value="Open", required data-bv-notempty="true" data-bv-notempty-message="Request Status is required")
+										| Open
+								div.radio
+									label
+										input(type="radio", name="status", value="Completed")
+										| Completed
+					div.form-group
+						div(class="col-sm-offset-2 col-sm-9")
+							input(type="submit", value="Search" class="btn btn-lg btn-primary")
+	include js-default
+	script(src='/javascripts/bootstrapValidator.min.js')
+	script(src="/javascripts/search.js")

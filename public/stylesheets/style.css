@@ -1,0 +1,12 @@
+body {
+  padding-top: 1em;
+}
+
+.well {
+	border-color: dimgrey;
+}
+
+.form-horizontal .has-feedback .form-control-feedback {
+	top: 0;
+	right: 25px;
+}
