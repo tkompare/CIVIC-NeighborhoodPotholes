@@ -17,17 +17,21 @@ block content
 					p Status:&nbsp;
 						b #{status}
 		div.container
+			p
+				a(href='') Search Again
 			table(class="table table-striped", data-toggle="table", data-cache="false", data-sort-name="date", data-sort-order="desc" data-show-columns="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-export="true" data-pagination="false")
 				thead
 					tr
-						th(data-field="date", data-sortable="true") Creation Date
-						th(data-field="request", data-sortable="true") Service Request Number
-						th(data-field="address", data-sortable="true") Address
-						th(data-field="status", data-sortable="true") Status
+						th(data-field="date", data-sortable="true") Creation Date&nbsp;
+						th(data-field="complete-date", data-sortable="true") Completion Date&nbsp;
+						th(data-field="request", data-sortable="true") Service Request Number&nbsp;
+						th(data-field="address", data-sortable="true") Address&nbsp;
+						th(data-field="status", data-sortable="true") Status&nbsp;
 				tbody
 					each pothole in potholes
 						tr
 							td= pothole.creation_date
+							td= pothole.completion_date
 							td= pothole.service_request_number
 							td= pothole.street_address
 							td= pothole.status
