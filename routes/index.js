@@ -100,7 +100,7 @@ router.route('/').post(function (req, res) {
 			}
 
 			res.render('indexPost', {
-				title: 'Pothole Requests Search Results',
+				title: 'Chicago Potholes',
 				ward: req.body.ward,
 				street: totitlecase(req.body.street),
 				potholes: potholesFound,
@@ -124,7 +124,7 @@ router.get('/', function (req, res) {
 		wards.data[i].alderman_titlecase = totitlecase(wards.data[i].alderman);
 	}
 
-	res.render('index', {title: 'Search for Pothole Requests', areas: communities.data, wards: wards.data});
+	res.render('index', {title: 'Chicago Potholes', areas: communities.data, wards: wards.data});
 });
 
 module.exports = router;
