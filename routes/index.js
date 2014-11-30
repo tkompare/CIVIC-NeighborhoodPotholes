@@ -90,8 +90,9 @@ router.route('/').post(function (req, res) {
 
 			});
 
-			var areaName = '';
+			var potholesCount = potholesFound.length;
 
+			var areaName = '';
 			for(var i=0; i<communities.data.length; ++i ) {
 				if(req.body.areas == communities.data[i].area_num) {
 					areaName = communities.data[i].community;
@@ -104,6 +105,7 @@ router.route('/').post(function (req, res) {
 				ward: req.body.ward,
 				street: totitlecase(req.body.street),
 				potholes: potholesFound,
+				potholescount: potholesCount,
 				area: totitlecase(areaName),
 				status: req.body.status
 			});
